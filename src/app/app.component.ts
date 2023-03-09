@@ -1,3 +1,4 @@
+import { AngularSampleApp } from './../assets/angular-sample-controller';
 import { Component } from '@angular/core';
 
 @Component({
@@ -7,4 +8,21 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'ejemplo-app';
+
+  data: any = false
+
+
+
+  changeData(){
+    this.data = true
+  }
+
+  initProcess(){
+    AngularSampleApp.onLivenessCheckPressed()
+  }
+
+
+  // initScanPhotoProcess(){
+  //   AngularSampleApp.onPhotoIDScanProcessor()
+  // }
 }

@@ -27,7 +27,7 @@
             "styles": [
               "src/styles.css"
             ],
-            "scripts": []
+            "scripts": ["src/assets/core-sdk/FaceTecSDK.js/FaceTecSDK.js"]
           },
           "configurations": {
             "production": {
