@@ -1,4 +1,4 @@
-import { AngularSampleApp } from './../assets/angular-sample-controller';
+// import { AngularSampleApp } from './../assets/angular-sample-controller';
 import { Component } from '@angular/core';
 
 @Component({
@@ -18,7 +18,7 @@ export class AppComponent {
   }
 
   initProcess(){
-    AngularSampleApp.onLivenessCheckPressed()
+    // AngularSampleApp.onLivenessCheckPressed()
   }
 
 

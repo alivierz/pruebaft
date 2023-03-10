@@ -1,16 +1,17 @@
 import { Component } from '@angular/core';
 import { Config } from 'src/assets/Config';
-import { PhotoIDScanProcessor } from "src/assets/processors/PhotoIDScanProcessor";
+import { AuthenticateProcessor } from 'src/assets/processors/AuthenticateProcessor';
 import { SampleAppUtilities } from "src/assets/utilities/SampleAppUtilities";
 
 @Component({
-  selector: 'app-prueba-id-scan',
-  templateUrl: './prueba-id-scan.component.html',
-  styleUrls: ['./prueba-id-scan.component.css']
+  selector: 'app-prueba-autenticate',
+  templateUrl: './prueba-autenticate.component.html',
+  styleUrls: ['./prueba-autenticate.component.css']
 })
-export class PruebaIdScanComponent {
 
-  latesPhotoProcesor!: PhotoIDScanProcessor;
+export class PruebaAutenticateComponent {
+
+  latesPhotoProcesor!: AuthenticateProcessor;
 
   constructor(){
 
@@ -37,7 +38,7 @@ export class PruebaIdScanComponent {
 
   initProcess() {
     const initSession = (sessionToken: any) =>{
-      this.latesPhotoProcesor = new PhotoIDScanProcessor(sessionToken as string, PruebaIdScanComponent as any, this.onCompletePhotoIdScan);
+      this.latesPhotoProcesor = new AuthenticateProcessor(sessionToken as string, PruebaAutenticateComponent as any, this.onCompletePhotoIdScan);
     }
     this.getSessionToken(initSession)
   };
@@ -97,3 +98,4 @@ export class PruebaIdScanComponent {
   }
 
 }
+

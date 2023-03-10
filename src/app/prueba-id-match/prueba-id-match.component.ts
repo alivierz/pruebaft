@@ -1,16 +1,18 @@
 import { Component } from '@angular/core';
 import { Config } from 'src/assets/Config';
-import { PhotoIDScanProcessor } from "src/assets/processors/PhotoIDScanProcessor";
+import { PhotoIDMatchProcessor } from 'src/assets/processors/PhotoIDMatchProcessor';
 import { SampleAppUtilities } from "src/assets/utilities/SampleAppUtilities";
 
 @Component({
-  selector: 'app-prueba-id-scan',
-  templateUrl: './prueba-id-scan.component.html',
-  styleUrls: ['./prueba-id-scan.component.css']
+  selector: 'app-prueba-id-match',
+  templateUrl: './prueba-id-match.component.html',
+  styleUrls: ['./prueba-id-match.component.css']
 })
-export class PruebaIdScanComponent {
 
-  latesPhotoProcesor!: PhotoIDScanProcessor;
+export class PruebaIdMatchComponent {
+
+  latesPhotoProcesor!: PhotoIDMatchProcessor;
+  latestEnrollmentIdentifier = "";
 
   constructor(){
 
@@ -37,7 +39,8 @@ export class PruebaIdScanComponent {
 
   initProcess() {
     const initSession = (sessionToken: any) =>{
-      this.latesPhotoProcesor = new PhotoIDScanProcessor(sessionToken as string, PruebaIdScanComponent as any, this.onCompletePhotoIdScan);
+      this.latestEnrollmentIdentifier = "browser_sample_app_" + SampleAppUtilities.generateUUId();
+      this.latesPhotoProcesor = new PhotoIDMatchProcessor(sessionToken as string, PruebaIdMatchComponent as any, this.onCompletePhotoIdScan, this.latestEnrollmentIdentifier);
     }
     this.getSessionToken(initSession)
   };

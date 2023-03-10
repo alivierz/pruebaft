@@ -1,16 +1,16 @@
 import { Component } from '@angular/core';
 import { Config } from 'src/assets/Config';
-import { PhotoIDScanProcessor } from "src/assets/processors/PhotoIDScanProcessor";
 import { SampleAppUtilities } from "src/assets/utilities/SampleAppUtilities";
+import { EnrollmentProcessor } from 'src/assets/processors/EnrollmentProcessor';
 
 @Component({
-  selector: 'app-prueba-id-scan',
-  templateUrl: './prueba-id-scan.component.html',
-  styleUrls: ['./prueba-id-scan.component.css']
+  selector: 'app-prueba-enrollment',
+  templateUrl: './prueba-enrollment.component.html',
+  styleUrls: ['./prueba-enrollment.component.css']
 })
-export class PruebaIdScanComponent {
+export class PruebaEnrollmentComponent {
 
-  latesPhotoProcesor!: PhotoIDScanProcessor;
+  latesPhotoProcesor!: EnrollmentProcessor;
 
   constructor(){
 
@@ -37,7 +37,7 @@ export class PruebaIdScanComponent {
 
   initProcess() {
     const initSession = (sessionToken: any) =>{
-      this.latesPhotoProcesor = new PhotoIDScanProcessor(sessionToken as string, PruebaIdScanComponent as any, this.onCompletePhotoIdScan);
+      this.latesPhotoProcesor = new EnrollmentProcessor(sessionToken as string, PruebaEnrollmentComponent as any, this.onCompletePhotoIdScan);
     }
     this.getSessionToken(initSession)
   };
@@ -97,3 +97,4 @@ export class PruebaIdScanComponent {
   }
 
 }
+
