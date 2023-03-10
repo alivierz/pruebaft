@@ -11,6 +11,7 @@ import { EnrollmentProcessor } from 'src/assets/processors/EnrollmentProcessor';
 export class PruebaEnrollmentComponent {
 
   latesPhotoProcesor!: EnrollmentProcessor;
+  latestEnrollmentIdentifier: any = ''
 
   constructor(){
 
@@ -37,7 +38,9 @@ export class PruebaEnrollmentComponent {
 
   initProcess() {
     const initSession = (sessionToken: any) =>{
-      this.latesPhotoProcesor = new EnrollmentProcessor(sessionToken as string, PruebaEnrollmentComponent as any, this.onCompletePhotoIdScan);
+
+      this.latestEnrollmentIdentifier = "browser_sample_app_" + SampleAppUtilities.generateUUId();
+      this.latesPhotoProcesor = new EnrollmentProcessor(sessionToken as string, PruebaEnrollmentComponent as any, this.onCompletePhotoIdScan, this.latestEnrollmentIdentifier);
     }
     this.getSessionToken(initSession)
   };

@@ -21,8 +21,8 @@ export class EnrollmentProcessor implements FaceTecFaceScanProcessor {
   success: boolean;
   sampleAppControllerReference: any;
   callbackData: any;
-
-  constructor(sessionToken: string, sampleAppControllerReference: any , dataCallback: (sessionToken?: string)=>void) {
+  enrrollementToken: any;
+  constructor(sessionToken: string, sampleAppControllerReference: any , dataCallback: (sessionToken?: string)=>void, enrrollementToken: any) {
     //
     // DEVELOPER NOTE:  These properties are for demonstration purposes only so the Sample App can get information about what is happening in the processor.
     // In the code in your own App, you can pass around signals, flags, intermediates, and results however you would like.
@@ -31,7 +31,7 @@ export class EnrollmentProcessor implements FaceTecFaceScanProcessor {
     this.sampleAppControllerReference = sampleAppControllerReference;
     this.latestSessionResult = null;
     this.callbackData = dataCallback
-
+    this.enrrollementToken = enrrollementToken
     //
     // Part 1:  Starting the FaceTec Session
     //
@@ -72,7 +72,7 @@ export class EnrollmentProcessor implements FaceTecFaceScanProcessor {
       auditTrailImage: sessionResult.auditTrail[0],
       lowQualityAuditTrailImage: sessionResult.lowQualityAuditTrail[0],
       sessionId: sessionResult.sessionId,
-      externalDatabaseRefID: this.sampleAppControllerReference.getLatestEnrollmentIdentifier()
+      externalDatabaseRefID: this.enrrollementToken
     };
 
     //

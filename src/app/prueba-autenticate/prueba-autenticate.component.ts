@@ -12,6 +12,7 @@ import { SampleAppUtilities } from "src/assets/utilities/SampleAppUtilities";
 export class PruebaAutenticateComponent {
 
   latesPhotoProcesor!: AuthenticateProcessor;
+  latestEnrollmentIdentifier: any  = '';
 
   constructor(){
 
@@ -38,7 +39,8 @@ export class PruebaAutenticateComponent {
 
   initProcess() {
     const initSession = (sessionToken: any) =>{
-      this.latesPhotoProcesor = new AuthenticateProcessor(sessionToken as string, PruebaAutenticateComponent as any, this.onCompletePhotoIdScan);
+      this.latestEnrollmentIdentifier = "browser_sample_app_" + SampleAppUtilities.generateUUId();
+      this.latesPhotoProcesor = new AuthenticateProcessor(sessionToken as string, PruebaAutenticateComponent as any, this.onCompletePhotoIdScan, this.latestEnrollmentIdentifier);
     }
     this.getSessionToken(initSession)
   };
